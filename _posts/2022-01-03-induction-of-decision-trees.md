@@ -128,15 +128,15 @@ Carbonell, Michalski, Mitchell (1983)은 머신러닝 시스템을 분류할 세
 ID3는 두 개의 가정을 베이스로 하는 information-based method를 사용한다. $C$가 class $P$의 $p$ object와 class $N$의 $n$개의 object를 포함한다고 하자. 이 때의 가정은 
 
 1. Any correct decision tree for $C$ will classify objects in the same proportion as their representation in $C$. An arbitrary object will be determined to belong to class $P$ with probability $\frac{p}{(p+n)}$ and to class $N$ with probability $\frac{n}{(p+n)}$
-2. When a decision tree is used to classify an object, it returns a class. A decision tree can thus be regarded as a source of a message $'P'$ or $'N'$, with the expected information needed to generate this message given by  $$I(p, n) = -\frac{p}{(p+n)}log_{2}\frac{p}{(p+n)} - \frac{n}{(p+n)}log_{2}\frac{n}{(p+n)}$$
+2. When a decision tree is used to classify an object, it returns a class. A decision tree can thus be regarded as a source of a message $'P'$ or $'N'$, with the expected information needed to generate this message given by  $I(p, n) = -\frac{p}{(p+n)}log_{2}\frac{p}{(p+n)} - \frac{n}{(p+n)}log_{2}\frac{n}{(p+n)}$
 
   
 
 첫 번째 가정은 각각의 객체가 어떤 클래스에 속할 확률이 동일하다는 것이고, 두 번째 가정은 의사결정나무는 class가 P인지 N인지 결정하는 역할을 하고, 기대 정보량은 위와 같이 주어진다는 것이다. 
 
-만약 attribute $A$가 $\{A_1, A_2, \cdots, A_v\}$를 값으로 갖고, 의사결정나무의 root에서 사용된다면 $C$를 $\{C_1, C_2, \cdots, C_v\}$로 나눌 것이다. 이때 $C_i$가 class $P$에 속하는 $p_i$ 개의 object와 class $N$에 속하는 $n_i$개의 object를 갖는다고 하면, $C_i$에 대한 subtree로 요구되는 expected information은 $I(p_i, n_i)$이다. 그럼 $A$를 root로 삼는 tree에 요구되는 expected information은 다음과 같이 가중평균을 통해 구할 수 있다. 
+만약 attribute $A$가 $\{A_1, A_2, \cdots, A_v\}$를 값으로 갖고, 의사결정나무의 root에서 사용된다면 $C$를 $\{C_1, C_2, \cdots, C_v\}$로 나눌 것이다. 이때 $C_i$가 class $P$에 속하는 $p_i$ 개의 object와 class $N$에 속하는 $n_i$개의 object를 갖는다고 하면, $C_i$에 대한 subtree로 요구되는 expected information은 $I(p_i, n_i)$이다. 그럼 $A$를 root로 삼는 tree에 요구되는 expected information은 다음과 같이 가중평균을 통해 구할 수 있다.   
 
-$$E(A) = \sum_{i=1}^{v}\frac{p_i+n_i}{p+n}I(p_i, n_i)$$
+$E(A) = \sum_{i=1}^{v}\frac{p_i+n_i}{p+n}I(p_i, n_i)$
 
 따라서 A에서 가지를 침으로써 얻을 수 있는 정보량은 $gain(A) = I(p, n) - E(A)$이다. 
 
