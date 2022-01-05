@@ -10,11 +10,11 @@ last_modified_at: 2022-01-03T15:39:00-22:00
 use_math: true
 ---
 
-
+<br/>
 
 *Induction of Descision Trees - J.R.Quinlan*
 
-
+<br/>
 
 ### Introduction 
 
