@@ -35,3 +35,52 @@ _(2017)GIR-based ensemble sampling approaches for imbalanced learning - Bo Tang,
 
 
 
+<br/>
+
+### GIR: Generalized Imbalance Ratio 
+
+<img src="../assets/images/GIR-based_ensemble/Fig2.jpeg" height=500 width=750 align="center">
+
+#### Motivation
+
+introduction에서도 언급했지만 기존 모형은 imbalance 정도를 측정하기 위해 sample size ratio를 활용하는데, sample size ratio는 class distribution에서의 imbalance 정도를 알려주지 않는다! 위의 예제를 통해서 확인해보자. (a)의 경우에는 Class1이 minority, Class2가 majority이고, (b)의 경우에는 sample size ratio가 비슷하지만 class-imbalanced한 데이터이다. 
+
+(a)에서는 imbalance한 경우이지만 Class1과 Class2가 쉽게 구분될 수 있을 거라는 것은 직관적으로 알 수 있다. 두 class 간의 겹치는 부분이 없기 때문에 classfication boundary를 정하는 것이 매우 쉽다. 
+
+(b)의 경우는 두 sample의 sample size ratio가 거의 동일함에도 class1의 sample들이 더 집중되어 있기 때문에 두 class를 분할하는 경계를 결정하는데 class2의 영향이 적게 미치게 된다. 따라서 Class2에 대한 분류 성능이 떨어지는 결과를 낳는다. 예를 들어서 Class1을 완벽하게 분류하는 경계선을 긋는다면 Class2에 큰 영향을 받지 않고 분류 정확도가 높게 나올 것이다. 이것은 우리가 원하는 경우가 아니기 때문에 sample size ratio를 imbalance의 정도를 측정하는 수단으로 사용하는 것은 문제가 있다. 따라서 이 논문에서는 기존 연구에서 사용하던 "majority/minority" 용어 대신에 "positive/negative"라는 용어를 대신 사용한다. 조금 다른 의미인데, majority랑 minority는 sample ratio를 비교해서 나누는 것이라면 positive랑 negative는 분포가 dominate한지에 따라 나뉜다.(negative가 dominate, positive가 dominated)
+
+<br/>
+
+#### GIR definition 
+
+* training data set: $\chi = \{(\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N)\}$    _where_ $\textbf{x}_i \in R^d$ and $y_i \in \{+1, -1\}$
+* the set of positive samples: $\mathcal{P}$ , sample size: $N_{+}$
+* the set of negative samples: $\mathcal{N}$, sample size: $N_{-}$
+
+
+
+논문에서는 generalized class-wise statistic을 사용해서 intra-class coherence(클래스 내 일관성)을 측정하는데, generalized class-wise statistic은 k-NN을 활용한 ENN(Extended Nearest Neighbor)에서 제안된 방법이다. 
+
+>  ENN에 대해서 간략하게 설명하자면, ENN은 intra-class coherence의 최대치를 기반으로 test sample의 class를 예측하는데 k-NN과 달리 test sample에서 가장 가까운 neighbor만 탐색하는 것이 아니라 test sample 자체를 가장 가까운 neighbor로 간주하는 방식을 사용한다. 모든 training data로부터 generalized class-wise statistic을 사용해서 전체 분포에 대해 학습할 수 있다. 
+
+The generalized class-wise statistic for the majority class:
+$$
+\begin{align}
+T_{+} &= \frac{1}{N_+}\sum_{\textbf{x} \in \mathcal{P}}\frac{1}{k}\sum_{r=1}^{k}I_r(\textbf{x}, \chi) \\
+&= \frac{1}{N_+}\sum_{\textbf{x} \in \mathcal{P}}t_k(\textbf{x})
+\end{align}
+$$
+
+- $k$: total number of nearest neighbors to be considered
+- $I_r(\mathbf{x}, \chi)$: the indicator function indicating wheter data sample $\textbf{x}$ and its $r$th nearest neighbor in $\chi$, denoted by $NN_r(\mathbf{x}, \chi)$ are from the same class or not
+- $t_k(\textbf{x})$: a point-wise statistic for the sample $\textbf{x}$ which evaluates how many samples in its $k$ nearest neighbors come from its own class
+
+
+
+The generalized class-wis statistic for the minority class:
+$$
+T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})
+$$
+
+
+이를 정리하면, $T_{+}, T_{-}$는 각각 positive class, negative class에 대해서 intra-class coherence를 구하는 것이고, 이 말은 곧 한 클래스 내의 샘플들의 가장 가까운 이웃들이 다른 클래스에 있는 샘플들에 의해서 얼마나 dominate되어 있는지를 측정하는 척도라고 볼 수 있다. 예를 들어서 $T_{+}$가 큰 값을 갖는다면 positive sample이 concentrated되어 있고, 가장 가까운 이웃들이 positive sample에 의해 dominate되어 있다는 뜻이고, $T_{+}$가 작은 값을 갖는다면 이웃들이 negative sample에 의해서 dominate 되어 있다는 뜻이다. 
