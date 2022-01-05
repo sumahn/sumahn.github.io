@@ -142,7 +142,7 @@ $E(A) = \sum_{i=1}^{v}\frac{p_i+n_i}{p+n}I(p_i, n_i)$
 
 **ID3의 장점은 class와 attribute간의 관계를 쉽게 잘 보여준다는 점이다.** 그러면서도 꽤나 괜찮은 predictive accuracy를 확보한다는 점인데, training set과 test set을 분리하고 test set에 대해서 예측력을 실험한 결과 준수한 성능을 보였다고 한다. 
 
-마지막으로 computational complexity는 어떨까? 의사결정나무에서 각각의 노드에서 속성 A가 모두 탐색됨과 동시에 각각의 class $C$개를 모두 탐색해야 하기 때문에 각 노드에서의 time complexity 는 $O(|C| * |A|)$이다. 여기서 $|\cdot|$은 개수를 의미한다. 따라서 ID3의 total computational complexity는 속성의 개수와 training set의 사이즈에 비례한다고 할 수 있다.
+마지막으로 computational complexity는 어떨까? 의사결정나무에서 각각의 노드에서 속성 A가 모두 탐색됨과 동시에 각각의 class $C$개를 모두 탐색해야 하기 때문에 각 노드에서의 time complexity 는 $O(\lvert C \rvert  * \lvert A \rvert)$이다. 여기서 $\lvert \cdot \rvert$은 개수를 의미한다. 따라서 ID3의 total computational complexity는 속성의 개수와 training set의 사이즈에 비례한다고 할 수 있다.
 
 <br/>
 
@@ -165,7 +165,7 @@ $E(A) = \sum_{i=1}^{v}\frac{p_i+n_i}{p+n}I(p_i, n_i)$
 
 이전 파트에서는 속성값이 잘못되는 등의 noise일 때를 다뤘다. 속성값이 결측치라면 어떻게 해야할까? 주어지는 정보를 참고하여 채워넣을 수도 있을 것이다. **ASSISTANT** 알고리즘은 Bayesian 방법을 통해서 class $C$에서 $A$의 분포를 통해서 object가 attribute $A$에서 $A_i$를 가질 확률을 구해 imputation한다. object가 attribute $A$에서 $A_i$ 값을 가질 확률은 다음과 같이 표현된다. 
 
-$$Pr(A = A_i | class =P) = \frac{Pr(A = A_i , class = P)}{Pr(class = P)} = \frac{p_i}{p}$$
+$Pr(A = A_i \lvert class =P) = \frac{Pr(A = A_i , class = P)}{Pr(class = P)} = \frac{p_i}{p}$
 
 이렇게 구한 뒤에 Likelihood를 최대화하는 값으로 채워넣으면 된다. 
 
@@ -193,7 +193,7 @@ ASSISTANT가 이 문제를 해결하는데, 모든 가능한 값에 대해서 �
 
 attribute A의 value가 얼마인가? 라는 것에 대한 information은 다음과 같이 나타낼 수 있다. 
 
-$$IV(A) = - \sum_{i=1}^{v}\frac{p_i + n_i}{p+n}log_{2}\frac{p_i +n_i}{p+n}$$
+$IV(A) = - \sum_{i=1}^{v}\frac{p_i + n_i}{p+n}log_{2}\frac{p_i +n_i}{p+n}$
 
 $gain(A)$는 $A$를 root에서 사용했을 때 정보 요구량의 감소를 말하기 때문에 $gain(A) / IV(A)$ 가 클수록 좋은 선택이 된다. 
 
