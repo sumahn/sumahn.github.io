@@ -7,7 +7,10 @@ categories:
 tags:
  - Machine Learning
 last_modified_at: 2022-01-03T15:39:00-22:00
+use_math: true
 ---
+
+
 
 *Induction of Descision Trees - J.R.Quinlan*
 
@@ -100,11 +103,11 @@ Carbonell, Michalski, Mitchell (1983)은 머신러닝 시스템을 분류할 세
 
 아래와 같은 training set이 있다고 가정하자.
 
-<img src=/assets/images/Table1.jpeg height="500" align="center">
+<img src="/assets/images/Table1.jpeg" height="500" align="center">
 
  induction task는 속성값으로 object의 class를 분류하는 rule을 세우는 것이다. 어떻게 classification rule을 세울 것인가? 의사결정나무가 그 역할을 할 수 있는데, 가장 단순하게는 아래 그림과 같이 분류할 수 있다. 
 
-<img src=/assets/images/Figure2.jpeg height="400" align="center">
+<img src="/assets/images/Figure2.jpeg" height="400" align="center">
 
 위에서부터 아래로 해석하면 되는데, 먼저 주어진 training set에서 outlook이 overcast인 경우는 모두 class가 P이므로 P로 결론짓는다. outlook이 sunny인 경우는 humidity 속성이 high인지 normal인지에 따라 class를 구분지을 수 있고, outlook이 rain인 경우에는 windy 속성이 true인지 false인지에 따라 class를 구분지을 수 있다. 
 
@@ -170,7 +173,7 @@ Alen Shapiro는 의사결정나무를 통해서 imputation하는 것을 제안�
 
 아이디어는 되게 좋아보이는데 unknown attribute가 1개일 때는 성능이 엄청 안좋다고 한다. 논문에서는 Bayesian, DT, 단순히 가장 많이 나오는 값으로 채우는 방법을 비교했는데 결과는 다음과 같다. 
 
-<img src=/assets/images/Table3.jpeg height="300" width=700 align="center">
+<img src="/assets/images/Table3.jpeg" height="300" width=700 align="center">
 
 Bayesian 방법은 단순 imputation 방법보다 살짝 좋고, DT가 생각보다 괜찮은 결과를 보였다. 
 
