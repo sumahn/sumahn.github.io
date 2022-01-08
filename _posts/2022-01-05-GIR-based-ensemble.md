@@ -53,7 +53,11 @@ introduction에서도 언급했지만 기존 모형은 imbalance 정도를 측�
 
 #### GIR definition 
 
-* training data set: $\chi = \{(\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N)\}$    _where_ $\textbf{x}_i \in R^d$ and $y_i \in \{+1, -1\}$
+* training data set: 
+
+$\chi = \{(\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N)\}$    
+_where_ $\textbf{x}_i \in R^d$ and $y_i \in \{+1, -1\}$
+g
 * the set of positive samples: $\mathcal{P}$ , sample size: $N_{+}$
 * the set of negative samples: $\mathcal{N}$, sample size: $N_{-}$
 
