@@ -39,7 +39,7 @@ _(2017)GIR-based ensemble sampling approaches for imbalanced learning - Bo Tang,
 
 ### GIR: Generalized Imbalance Ratio 
 
-<img src="../assets/images/GIR-based_ensemble/Fig2.jpeg" height=500 width=750 align="center">
+<img src="/assets/images/GIR-based_ensemble/Fig2.jpeg" height=500 width=750 align="center">
 
 #### Motivation
 
@@ -63,12 +63,15 @@ introduction에서도 언급했지만 기존 모형은 imbalance 정도를 측�
 
 >  ENN에 대해서 간략하게 설명하자면, ENN은 intra-class coherence의 최대치를 기반으로 test sample의 class를 예측하는데 k-NN과 달리 test sample에서 가장 가까운 neighbor만 탐색하는 것이 아니라 test sample 자체를 가장 가까운 neighbor로 간주하는 방식을 사용한다. 모든 training data로부터 generalized class-wise statistic을 사용해서 전체 분포에 대해 학습할 수 있다. 
 
-The generalized class-wise statistic for the majority class:
+The generalized class-wise statistic for the majority class:  
+
 $$
+
 \begin{align}
 T_{+} &= \frac{1}{N_+}\sum_{\textbf{x} \in \mathcal{P}}\frac{1}{k}\sum_{r=1}^{k}I_r(\textbf{x}, \chi) \\
 &= \frac{1}{N_+}\sum_{\textbf{x} \in \mathcal{P}}t_k(\textbf{x})
 \end{align}
+
 $$
 
 - $k$: total number of nearest neighbors to be considered
@@ -77,10 +80,14 @@ $$
 
 
 
-The generalized class-wis statistic for the minority class:
-$$
+The generalized class-wis statistic for the minority class:  
+
+
+$
+\begin{align}
 T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})
-$$
+\end{align}
+$
 
 
 이를 정리하면, $T_{+}, T_{-}$는 각각 positive class, negative class에 대해서 intra-class coherence를 구하는 것이고, 이 말은 곧 한 클래스 내의 샘플들의 가장 가까운 이웃들이 다른 클래스에 있는 샘플들에 의해서 얼마나 dominate되어 있는지를 측정하는 척도라고 볼 수 있다. 예를 들어서 $T_{+}$가 큰 값을 갖는다면 positive sample이 concentrated되어 있고, 가장 가까운 이웃들이 positive sample에 의해 dominate되어 있다는 뜻이고, $T_{+}$가 작은 값을 갖는다면 이웃들이 negative sample에 의해서 dominate 되어 있다는 뜻이다. 
