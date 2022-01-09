@@ -39,7 +39,7 @@ _(2017)GIR-based ensemble sampling approaches for imbalanced learning - Bo Tang,
 
 ### GIR: Generalized Imbalance Ratio 
 
-<img src="../assets/images/GIR-based_ensemble/Fig2.jpeg" height=500 width=750 align="center">
+<img src="/assets/images/GIR-based_ensemble/Fig2.jpeg" height=500 width=750 align="center">
 
 #### Motivation
 
@@ -53,8 +53,14 @@ introduction에서도 언급했지만 기존 모형은 imbalance 정도를 측�
 
 #### GIR definition 
 
-* training data set: $\chi = \{(\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N)\}$    _where_ $\textbf{x}_i \in R^d$ and $y_i \in \{+1, -1\}$
+* training data set:   
+
+  $\chi = \{(\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N)\}$   
+
+   _where_ $\textbf{x}_i \in R^d$ and $y_i \in \{+1, -1\}$
+
 * the set of positive samples: $\mathcal{P}$ , sample size: $N_{+}$
+
 * the set of negative samples: $\mathcal{N}$, sample size: $N_{-}$
 
 
@@ -71,6 +77,7 @@ T_{+} &= \frac{1}{N_+}\sum_{\textbf{x} \in \mathcal{P}}\frac{1}{k}\sum_{r=1}^{k}
 \end{align}
 $$
 
+
 - $k$: total number of nearest neighbors to be considered
 - $I_r(\mathbf{x}, \chi)$: the indicator function indicating wheter data sample $\textbf{x}$ and its $r$th nearest neighbor in $\chi$, denoted by $NN_r(\mathbf{x}, \chi)$ are from the same class or not
 - $t_k(\textbf{x})$: a point-wise statistic for the sample $\textbf{x}$ which evaluates how many samples in its $k$ nearest neighbors come from its own class
@@ -79,7 +86,9 @@ $$
 
 The generalized class-wis statistic for the minority class:
 $$
+\begin{equation}
 T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})
+\end{equation}
 $$
 
 

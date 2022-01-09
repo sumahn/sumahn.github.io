@@ -15,18 +15,18 @@
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
-title                    : "Statistics, Math, Computer"
+locale                   : "ko-KR" # 블로그 주 언어 
+title                    : "Statistics, Math, Computer" # 사이트 상단에 표시될 타이틀
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "S.M. Cha"
-description              : "많은 것을 배우고 싶은 사람"
-url                      : "https://sumahn.github.io"
+name                     : "S.M. Cha" # 이름
+description              : "많은 것을 배우고 싶은 사람" # 설명
+url                      : "https://sumahn.github.io" #인터넷에 공개되는 주소 
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/logo.jpeg"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+teaser                   : # 폴백(예상치 못한 오류)일 때 보일 이미지
+logo                     : "/assets/images/logo.jpeg" # 화면에 보여질 이미지
+masthead_title           : # overrides the website title displayed in the masthead, use " " for no title # 화면 title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -104,13 +104,13 @@ analytics:
 author:
   name             : "S.M. Cha"
   avatar           : "/assets/images/profile.jpg"
-  bio              : "많은 것을 배우고 싶은 사람"
+  bio              : "많은 것을 배우고 싶은 사람" # 자기 소개
   location         : "South Korea"
-  email            :
+  email            : # 이메일 주소 (links에서 작성 가능)
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:oldrain123@yonsei.ac.kr"
+      url: "mailto:oldrain123@yonsei.ac.kr"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -122,7 +122,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/sumahn"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
@@ -130,6 +130,9 @@ author:
 # Site Footer
 footer:
   links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:oldrain123@yonsei.ac.kr"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url:
@@ -216,7 +219,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+paginate: 10 # 첫 화면에 몇 개 posts가 보이게 할 건지
 paginate_path: /page:num/
 timezone: Asia/Seoul
 
@@ -248,7 +251,7 @@ whitelist:
 #  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
 #  - <base_path>/categories/my-awesome-category/index.html ~> path: /categories/
 #  - <base_path>/my-awesome-category/index.html ~> path: /
-category_archive:
+category_archive: # 주석 풀어주기 
   type: liquid
   path: /categories/
 tag_archive:
@@ -288,3 +291,15 @@ defaults:
       comments: true
       share: true
       related: true
+
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      read_time: false
+      comments: false
+      share: true
+      related: false
