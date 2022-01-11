@@ -117,22 +117,22 @@ Carbonell, Michalski, Mitchell (1983)은 머신러닝 시스템을 분류할 세
 
 ### ID3 
 
-우리가 아직 관측하지 못한 데이터에 대해서도 예측을 잘 하기 위해서는 training set에 과적합되지 않고 단순한 모형이 더 좋다.(_Tradeoff of Bias and Variance_) 그렇다면 한 가지 시도해볼 수 있는 것은 training set을 정확하게 분류해낼 수 있는 의사결정나무 중에서 가장 단순한 모형을 선택하는 것이다. 하지만 이런 나무의 개수는 너무 많기 때문에 computation 측면에서 굉장히 비효율적이기 때문에 small induction task에 대해서 적절하다. 
+우리가 아직 관측하지 못한 데이터에 대해서도 예측을 잘 하기 위해서는 training set에 과적합되지 않고 단순한 모형이 더 좋다.(_Tradeoff of Bias and Variance_) 그렇다면 한 가지 시도해볼 수 있는 것은 training set을 정확하게 분류해낼 수 있는 의사결정나무 중에서 가장 단순한 모형을 선택하는 것이다. 하지만 이런 나무의 개수는 너무 많아 computation 측면에서 굉장히 비효율적이기 때문에 small induction task에 대해서만 적절하다. 
 
-**ID3**는 많은 attribute(feature)와 objects가 있지만 computation이 많지 않은 tree가 상대적으로 더 좋은 측면에서 설계되었다. 일단 ID의 기본 구조는 iterative하다. Window(training set의 부분집합)이 랜덤하게 선택되고 의사결정나무도 이 window에 맞게 생성된다. 그 후에 뽑히지 않은 나머지 set으로 테스트한다. 만약에 window랑 window에 뽑히지 않은 set에 대해서 정확도가 높다면 전체 training set을 정확하게 분류한다고 판단할 수 있고, 프로세스를 종료하면 된다. 잘 분류하지 못하면 오분류한 sample을 window에 포함시킨 후에 프로세스를 이어간다. 이렇게 하면 몇 번의 iteration으로 정확도를 높인 의사결정나무를 만들 수 있다고 한다. O'Keefe는 window에 전체 training set이 포함되지 않으면 iterative framework가 final tree로 converge한다고 보장할 수 없다고 지적했는데, 이 논문 당시에는 아직 이런 일은 없었다고 한다.(지금은 이 문제가 발생하고 이미 해결했을 수도 있다.)
+**ID3**는 많은 attribute(feature)와 objects가 있더라도 computation이 많지 않은 tree가 상대적으로 더 좋다는 점에서 출발한다. 일단 ID의 기본 구조는 iterative하다. Window(training set의 부분집합)가 랜덤하게 선택되고 의사결정나무도 이 window에 맞게 생성된다. 그 후에 뽑히지 않은 나머지 set으로 테스트한다. 만약에 window랑 window에 뽑히지 않은 set에 대해서 정확도가 높다면 전체 training set을 정확하게 분류한다고 판단할 수 있고, 프로세스를 종료하면 된다. 잘 분류하지 못하면 오분류한 sample을 window에 포함시킨 후에 프로세스를 이어간다. 이렇게 하면 몇 번의 iteration으로 정확도를 높인 의사결정나무를 만들 수 있다고 한다. O'Keefe는 window에 전체 training set이 포함되지 않으면 iterative framework가 final tree로 converge한다고 보장할 수 없다고 지적했는데, 이 논문 당시에는 아직 이런 일은 없었다고 한다.(지금은 이 문제가 발생하고 이미 해결했을 수도 있다.)
 
-문제의 핵심은 임의의 객체 집합 C에 대해서 어떻게 의사결정나무를 만드는가이다. 만약 $C$가 공집합이거나 하나의 class에 속하는 객체들만을 갖는다면, 의사결정나무는 굉장히 쉽게 구성될 수 있다. 하지만 $T$를 $O_1, O_2, \cdots, O_w$를 결과로 가질 수 있는 test set이라고 하면, $C$에 속한 각각의 객체는 $T$의 possibile outcome 중 하나를 갖기 때문에 $C$는 $\{C_1, C_2, \cdots, C_w\}$로 나타낼 수 있다. 그리고 $C_i$ 는 $O_i$를 결과로 갖는 객체들을 포함한다. 
+문제의 핵심은 임의의 객체 집합 C에 대해서 어떻게 의사결정나무를 만드는가이다. 만약 $C$가 공집합이거나 하나의 class에 속하는 객체들만을 갖는다면, 의사결정나무는 해당 label로 구성된 리프로만 만들기 때문에 굉장히 쉽게 구성될 수 있다. 하지만 $T$를 $O_1, O_2, \cdots, O_w$를 결과로 가질 수 있는 test라고 하면, $C$에 속한 각각의 객체는 $T$의 possibile outcome 중 하나를 갖기 때문에 $C$는 $\{C_1, C_2, \cdots, C_w\}$로 나타낼 수 있다. 그리고 $C_i$ 는 $O_i$를 결과로 갖는 객체들을 포함한다. 
 
-만약 $C_i$ 각각이 $C_i$에 대한 의사결정나무로 대체될 수 있다면 모든 $C$에 대한 의사결정나무를 만들 수 있다는 것은 직관적으로 이해할 수 있다. 잘못하면 각각의 subset이 하나의 class로 구성된 집합을 만들어버릴 수 있기 때문에 간단한 의사결정나무를 만들 때는 test set을 선택하는 것은 매우 중요하다. 
+만약 $C_i$ 각각이 $C_i$에 대한 의사결정나무로 대체될 수 있다면 모든 $C$에 대한 의사결정나무를 만들 수 있다는 것은 직관적으로 이해할 수 있다. 만약 $T$가 object를 분할하는 의미있는 기준을 주도록 만들어질 수 있다면 이렇게 나누고 분류하는 작업은 $C$에 있는 객체들을 항상 정확하게 분류할 수 있다.
 
-ID3는 두 개의 가정을 베이스로 하는 information-based method를 사용한다. $C$가 class $P$의 $p$ object와 class $N$의 $n$개의 object를 포함한다고 하자. 이 때의 가정은 
+ID3는 두 개의 가정을 베이스로 하는 information-based method를 사용한다. $C$가 class $P$의 $p$개의 object와 class $N$의 $n$개의 object를 포함한다고 하자. 이 때의 가정은 
 
 1. Any correct decision tree for $C$ will classify objects in the same proportion as their representation in $C$. An arbitrary object will be determined to belong to class $P$ with probability $\frac{p}{(p+n)}$ and to class $N$ with probability $\frac{n}{(p+n)}$
 2. When a decision tree is used to classify an object, it returns a class. A decision tree can thus be regarded as a source of a message $'P'$ or $'N'$, with the expected information needed to generate this message given by  $I(p, n) = -\frac{p}{(p+n)}log_{2}\frac{p}{(p+n)} - \frac{n}{(p+n)}log_{2}\frac{n}{(p+n)}$
 
   
 
-첫 번째 가정은 각각의 객체가 어떤 클래스에 속할 확률이 동일하다는 것이고, 두 번째 가정은 의사결정나무는 class가 P인지 N인지 결정하는 역할을 하고, 기대 정보량은 위와 같이 주어진다는 것이다. 
+첫 번째 가정은 각각의 객체가 어떤 클래스에 속할 확률이 동일하다는 것이고, 두 번째 가정은 의사결정나무는 class가 P인지 N인지 결정하는 역할을 하고, 이때 필요한 기대 정보량은 위와 같이 주어진다는 것이다.
 
 만약 attribute $A$가 $\{A_1, A_2, \cdots, A_v\}$를 값으로 갖고, 의사결정나무의 root에서 사용된다면 $C$를 $\{C_1, C_2, \cdots, C_v\}$로 나눌 것이다. 이때 $C_i$가 class $P$에 속하는 $p_i$ 개의 object와 class $N$에 속하는 $n_i$개의 object를 갖는다고 하면, $C_i$에 대한 subtree로 요구되는 expected information은 $I(p_i, n_i)$이다. 그럼 $A$를 root로 삼는 tree에 요구되는 expected information은 다음과 같이 가중평균을 통해 구할 수 있다.   
 

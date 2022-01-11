@@ -55,12 +55,30 @@ introduction에서도 언급했지만 기존 모형은 imbalance 정도를 측�
 
 #### GIR definition 
 
+<<<<<<< HEAD
 * training data set:  
   $\chi = \{ (\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N) \}$
   
   _where_ $\textbf{x}_i \in R^d $ and $y_i \in \{+1, -1\}$
 
+=======
+<<<<<<< HEAD
+* training data set:   
+
+  $\chi = \{(\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N)\}$   
+
+   _where_ $\textbf{x}_i \in R^d$ and $y_i \in \{+1, -1\}$
+
+=======
+* training data set: 
+
+$\chi = \{(\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N)\}$    
+_where_ $\textbf{x}_i \in R^d$ and $y_i \in \{+1, -1\}$
+g
+>>>>>>> 8efd6e4342dde30e62a7eecb5c1610071042d303
+>>>>>>> 4d2f7c6f2f06a4e20d77d0cf87d58bf6d969d991
 * the set of positive samples: $\mathcal{P}$ , sample size: $N_{+}$
+
 * the set of negative samples: $\mathcal{N}$, sample size: $N_{-}$
 
 
@@ -77,19 +95,37 @@ T_{+} &= \frac{1}{N_+}\sum_{\textbf{x} \in \mathcal{P}}\frac{1}{k}\sum_{r=1}^{k}
 &= \frac{1}{N_+}\sum_{\textbf{x} \in \mathcal{P}}t_k(\textbf{x})
 \end{align}$$
 
+
 - $k$: total number of nearest neighbors to be considered
 - $I_r(\mathbf{x}, \chi)$: the indicator function indicating wheter data sample $\textbf{x}$ and its $r$th nearest neighbor in $\chi$, denoted by $NN_r(\mathbf{x}, \chi)$ are from the same class or not
 - $t_k(\textbf{x})$: a point-wise statistic for the sample $\textbf{x}$ which evaluates how many samples in its $k$ nearest neighbors come from its own class
 
 
 
+<<<<<<< HEAD
+The generalized class-wis statistic for the minority class:
+$$
+\begin{equation}
+T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})
+\end{equation}
+$$
+=======
 The generalized class-wis statistic for the minority class:  
 
 
+<<<<<<< HEAD
 
 $$T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})$$
 
 
 이를 정리하면, $T_{+}, T_{-}$는 각각 positive class, negative class에 대해서 intra-class coherence를 구하는 것이고, 이 말은 곧 한 클래스 내의 샘플들의 가장 가까운 이웃들이 다른 클래스에 있는 샘플들에 의해서 얼마나 dominate되어 있는지를 측정하는 척도라고 볼 수 있다. 예를 들어서 $T_{+}$가 큰 값을 갖는다면 positive sample이 concentrated되어 있고, 가장 가까운 이웃들이 positive sample에 의해 dominate되어 있다는 뜻이고, $T_{+}$가 작은 값을 갖는다면 이웃들이 negative sample에 의해서 dominate 되어 있다는 뜻이다. 
+=======
+$
+\begin{align}
+T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})
+\end{align}
+$
+>>>>>>> 8efd6e4342dde30e62a7eecb5c1610071042d303
+>>>>>>> 4d2f7c6f2f06a4e20d77d0cf87d58bf6d969d991
 
 
