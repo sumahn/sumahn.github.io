@@ -26,13 +26,13 @@ baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # 폴백(예상치 못한 오류)일 때 보일 이미지
 logo                     : "/assets/images/logo.jpeg" # 화면에 보여질 이미지
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title # 화면 title
-# breadcrumbs            : false # true, false (default)
+masthead_title           : "Statistics, Math, Computer" # overrides the website title displayed in the masthead, use " " for no title # 화면 title
+breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 comments:
   provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
-    shortname            : "sumahn-github-io" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "sumahn"  # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -289,7 +289,7 @@ defaults:
       author_profile: true
       read_time: true
       comments: true
-      share: true
+      share: false 
       related: true
 
   # _pages
@@ -301,5 +301,5 @@ defaults:
       author_profile: true
       read_time: false
       comments: false
-      share: true
+      share: false  
       related: false
