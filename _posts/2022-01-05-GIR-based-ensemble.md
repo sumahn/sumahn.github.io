@@ -53,20 +53,12 @@ introduction에서도 언급했지만 기존 모형은 imbalance 정도를 측�
 
 #### GIR definition 
 
-<<<<<<< HEAD
 * training data set:   
 
   $\chi = \{(\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N)\}$   
 
    _where_ $\textbf{x}_i \in R^d$ and $y_i \in \{+1, -1\}$
 
-=======
-* training data set: 
-
-$\chi = \{(\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_N, y_N)\}$    
-_where_ $\textbf{x}_i \in R^d$ and $y_i \in \{+1, -1\}$
-g
->>>>>>> 8efd6e4342dde30e62a7eecb5c1610071042d303
 * the set of positive samples: $\mathcal{P}$ , sample size: $N_{+}$
 
 * the set of negative samples: $\mathcal{N}$, sample size: $N_{-}$
@@ -80,12 +72,10 @@ g
 The generalized class-wise statistic for the majority class:  
 
 $$
-
 \begin{align}
 T_{+} &= \frac{1}{N_+}\sum_{\textbf{x} \in \mathcal{P}}\frac{1}{k}\sum_{r=1}^{k}I_r(\textbf{x}, \chi) \\
 &= \frac{1}{N_+}\sum_{\textbf{x} \in \mathcal{P}}t_k(\textbf{x})
 \end{align}
-
 $$
 
 
@@ -95,23 +85,12 @@ $$
 
 
 
-<<<<<<< HEAD
+
 The generalized class-wis statistic for the minority class:
 $$
 \begin{equation}
 T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})
 \end{equation}
 $$
-=======
-The generalized class-wis statistic for the minority class:  
-
-
-$
-\begin{align}
-T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})
-\end{align}
-$
->>>>>>> 8efd6e4342dde30e62a7eecb5c1610071042d303
-
 
 이를 정리하면, $T_{+}, T_{-}$는 각각 positive class, negative class에 대해서 intra-class coherence를 구하는 것이고, 이 말은 곧 한 클래스 내의 샘플들의 가장 가까운 이웃들이 다른 클래스에 있는 샘플들에 의해서 얼마나 dominate되어 있는지를 측정하는 척도라고 볼 수 있다. 예를 들어서 $T_{+}$가 큰 값을 갖는다면 positive sample이 concentrated되어 있고, 가장 가까운 이웃들이 positive sample에 의해 dominate되어 있다는 뜻이고, $T_{+}$가 작은 값을 갖는다면 이웃들이 negative sample에 의해서 dominate 되어 있다는 뜻이다. 
