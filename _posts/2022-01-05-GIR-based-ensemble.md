@@ -145,7 +145,7 @@ $$T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})$$
 ### GIREnOS: GIR-based ensemble oversampling approach
 
 <p align="center">
-  <img src="../assets/images/GIR-based_ensemble/GIREnOS_algorithm.jpeg" width=500>
+  <img src="/assets/images/GIR-based_ensemble/GIREnOS_algorithm.jpeg" width=500>
 </p>
 
 GIREnUS와 거의 동일하지만 undersampling, oversampling의 차이이다. oversampling probability는 다음과 같다. 
