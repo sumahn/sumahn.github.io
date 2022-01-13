@@ -107,7 +107,7 @@ $$T_{-} = \frac{1}{N_{-}}\sum_{\textbf{x} \in \mathcal{N}}t_k(\textbf{x})$$
 
 이 논문에서는 GIR이 갖는 이론적 특징들을 수학적으로 증명하고 있지만 여기서는 증명을 다루지는 않도록 한다. (중요한 증명이긴 하지만 해석학에 대한 공부가 더 필요함)
 
-1. 두 데이터셋이 balanced sample size ratio를 가질 때 $\lim_{N \rightarrow \infin}E(\Delta T) = 0$ 가 성립한다. 
+1. 두 데이터셋이 balanced sample size ratio를 가질 때 $\lim_{N \rightarrow \infty}E(\Delta T) = 0$ 가 성립한다. 
 2. 두 데이터셋이 balanced sample ratio를 성립하면서 무수히 많은 샘플 수를 가진다면 GIR은 sample size ratio와 같다. 
 
 <br/>
